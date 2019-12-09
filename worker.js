@@ -1,7 +1,7 @@
 // urlB64ToUint8Array is a magic function that will encode the base64 public key
 // to Array buffer which is needed by the subscription option
-  self.addEventListener('install',function(){
-    console.log('installed');
+  self.addEventListener('activate',function(){
+    console.log('activated');
   })
   self.addEventListener('push', function(event) {
     if(event) {

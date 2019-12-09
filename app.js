@@ -41,7 +41,11 @@ const registration = async () => {
   const register = await navigator.serviceWorker.register("worker.js", {
     scope: "/"
   });
-  return register;
+  if(await navigator.serviceWorker.ready) {
+    console.log("service worker is ready")
+    return register;
+  }
+   
 };
 const main = async () => {
   check();
@@ -83,30 +87,7 @@ const showPushMessage = () => {
 
       // Examine the text in the response
       response.json().then(function(data) {
-        debugger
-        var title = data.message;
-        var options = {
-          body: "Invoice download",
-          icon: "lvt_logo_new.png",
-          vibrate: [200, 100, 200],
-          tag: data.tag,
-          sound: "https://www2.cs.uic.edu/~i101/SoundFiles/PinkPanther60.wav",
-          actions: [
-            {
-              action: "viewDownloads",
-              title: "View Downloads",
-              icon: "checkmark.png"
-            },
-            {
-              action: "close",
-              title: "Close notification",
-              icon: "xmark.png"
-            }
-          ]
-        };
-        registration().then((event) =>{
-          event.showNotification(title,options)
-        })
+        console.log(data)
       });
     })
     .catch(function(err) {
