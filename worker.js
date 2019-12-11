@@ -5,14 +5,14 @@
   })
   self.addEventListener('push', function(event) {
     if(event) {
-            const data = event.data.json()
+      const data = event.data.json()
       console.log('Push has been received')
       var title = data.message;
       var options = {
         body: "Invoice download",
         icon:"lvt_logo_new.png",
         tag: data.tag,
-        sound: "https://www2.cs.uic.edu/~i101/SoundFiles/PinkPanther60.wav",
+        sound: "/audio/inflicted.mp3",
         actions: [
           {
             action: "viewDownloads",
